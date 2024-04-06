@@ -113,4 +113,8 @@ export class SyncfusionDataComponent implements OnInit, OnDestroy {
     document.body.style.overflow = 'hidden';
     this.selectedRecordDetails = detail;
   }
+
+  onStandardGridExportComplete() {
+    this.gridReference?.showColumns(['Action']);
+  }
 }

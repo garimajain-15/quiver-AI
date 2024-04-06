@@ -12,25 +12,27 @@
   </div>
   <ejs-grid #gridReference [dataSource]="data" allowTextWrap="true" gridLines="Both"
             [allowSorting]="true" [allowFiltering]="true" width="100%"
-            [allowPaging]="true" [allowPdfExport]="true"
+            [allowPaging]="true" [allowPdfExport]="true" showColumnChooser='true'
             [allowExcelExport]="true" [pageSettings]="initialPageSettings"
             [toolbar]='gridToolbarOptions' (toolbarClick)="onToolbarClick($event)"
-            (pdfHeaderQueryCellInfo)='pdfHeaderQueryCellInfo($event)'>
+            (pdfHeaderQueryCellInfo)='pdfHeaderQueryCellInfo($event)'
+            (printComplete)="onStandardGridExportComplete()"
+            (excelExportComplete)="onStandardGridExportComplete()"
+            (pdfExportComplete)='onStandardGridExportComplete()'>
     <e-columns>
-      <e-column field="y_seq" headerText="y seq"></e-column>
-      <e-column field="mdrm" headerText="mdrm"></e-column>
-      <e-column field="schedule" headerText="schedule"></e-column>
-      <e-column field="line_item_code" headerText="Line Item Code"></e-column>
-      <e-column field="item_name" headerText="Item Name"></e-column>
-      <e-column field="q2_2023" headerText="q2 2023"></e-column>
-      <e-column field="q3_2023" headerText="q3_2023"></e-column>
-      <e-column field="abs_change_pct" headerText="Abs Change Pct"></e-column>
-      <e-column headerText="Action">
+      <e-column field="y_seq" headerText="y seq" width="100"></e-column>
+      <e-column field="mdrm" headerText="mdrm" width="100"></e-column>
+      <e-column field="schedule" headerText="schedule" width="120"></e-column>
+      <e-column field="line_item_code" headerText="Line Item Code" width="120"></e-column>
+      <e-column field="item_name" headerText="Item Name" width="120"></e-column>
+      <e-column field="q2_2023" headerText="q2 2023" width="120"></e-column>
+      <e-column field="q3_2023" headerText="q3_2023" width="120"></e-column>
+      <e-column field="abs_change_pct" headerText="Abs Change Pct" width="130"></e-column>
+      <e-column headerText="Action" width="100">
         <ng-template #template let-data>
           <ejs-tooltip content="Click here to update record.">
             <button ejs-button content="Edit" (click)="openUpdateDetailPage(data)"></button>
           </ejs-tooltip>
-
         </ng-template>
       </e-column>
     </e-columns>

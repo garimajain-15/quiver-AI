@@ -30,41 +30,44 @@ export class SyncfusionDataService {
 
   gridToolbarClickEvents(args: ClickEventArgs, gridReference: GridComponent, componentName: string, pdfHeadingLeftPosition: number){
     if (args?.item?.text && gridReference ) {
-      switch (args['item']['text']) {
-        case 'PDF Export':
-          this.pdfExportProperties(gridReference, componentName, pdfHeadingLeftPosition);
-          break;
-        case 'CSV Export':
-          const csvExportProperties: ExcelExportProperties = {
-            fileName: componentName + '.csv',
-            header: {
-              headerRows: 2,
-              rows: [
-                {
-                  cells: [{
-                    colSpan: gridReference?.getVisibleColumns()?.length, value: componentName
+      const isColumnOtherThanActionVisible = this.checkGridColumnVisibility(gridReference, args['item']['text']);
+      if (isColumnOtherThanActionVisible) {
+        switch (args['item']['text']) {
+          case 'PDF Export':
+            this.pdfExportProperties(gridReference, componentName, pdfHeadingLeftPosition);
+            break;
+          case 'CSV Export':
+            const csvExportProperties: ExcelExportProperties = {
+              fileName: componentName + '.csv',
+              header: {
+                headerRows: 2,
+                rows: [
+                  {
+                    cells: [{
+                      colSpan: gridReference?.getVisibleColumns()?.length, value: componentName
+                    }]
                   }]
-                }]
-            },
-          };
-          gridReference?.csvExport(csvExportProperties);
-          break;
-        case 'Excel Export':
-          const excelExportProperties: ExcelExportProperties = {
-            header: {
-              headerRows: 1,
-              rows: [
-                {
-                  cells: [{
-                    colSpan: gridReference?.getVisibleColumns()?.length, value: componentName,
-                    style: {fontSize: 16, hAlign: 'Center', bold: true}
+              },
+            };
+            gridReference?.csvExport(csvExportProperties);
+            break;
+          case 'Excel Export':
+            const excelExportProperties: ExcelExportProperties = {
+              header: {
+                headerRows: 1,
+                rows: [
+                  {
+                    cells: [{
+                      colSpan: gridReference?.getVisibleColumns()?.length, value: componentName,
+                      style: {fontSize: 16, hAlign: 'Center', bold: true}
+                    }]
                   }]
-                }]
-            },
-            fileName: componentName + '.xlsx'
-          };
-          gridReference?.excelExport(excelExportProperties);
-          break;
+              },
+              fileName: componentName + '.xlsx'
+            };
+            gridReference?.excelExport(excelExportProperties);
+            break;
+        }
       }
     }
 
@@ -122,6 +125,32 @@ export class SyncfusionDataService {
       position: {X: 'Center', Y: 'Bottom'},
       showCloseButton: true,
       cssClass: 'e-toast-success'
+    });
+  }
+
+  checkGridColumnVisibility(gridReference: GridComponent, toolbarActionType: string) {
+    let visibility: boolean = true;
+    if (toolbarActionType === "PDF Export" || toolbarActionType === "Print" ||
+      toolbarActionType === "CSV Export" || toolbarActionType === "Excel Export") {
+      gridReference.hideColumns(['Action']);
+      if (gridReference.getVisibleColumns().length > 0) {
+        visibility = true;
+      } else {
+        gridReference.showColumns(['Action']);
+        visibility = false;
+        this.displayInformationToast(toolbarActionType);
+      }
+    }
+    return visibility;
+  }
+
+  displayInformationToast(toolbarActionType: string) {
+    ToastUtility.show({
+      content: 'Please select at least one column other than the action column to ' + toolbarActionType + '.',
+      timeOut: 2000,
+      position: {X: 'Center', Y: 'Bottom'},
+      showCloseButton: true,
+      cssClass: 'e-toast-info'
     });
   }
 }
