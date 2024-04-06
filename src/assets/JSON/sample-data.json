@@ -1,0 +1,282 @@
+[
+  {
+    "y_seq": 1,
+    "mdrm": "bhdm6631",
+    "schedule": "HC",
+    "line_item_code": "13.a.(1)",
+    "item_name": "DEPOSITS: NONINTEREST-BEARING",
+    "q2_2023": 1130000,
+    "q3_2023": 1341000,
+    "abs_change_pct": 18.67
+  },
+  {
+    "y_seq": 2,
+    "mdrm": "bhdm6636",
+    "schedule": "HC",
+    "line_item_code": "13.a.(2)",
+    "item_name": "TOTAL INTEREST-BEARING DEPOSITS IN FOREIGN AND DOMESTIC OFFICES",
+    "q2_2023": 3426000,
+    "q3_2023": 3450000,
+    "abs_change_pct": 0.7
+  },
+  {
+    "y_seq": 3,
+    "mdrm": "bhck3545",
+    "schedule": "HC",
+    "line_item_code": "5",
+    "item_name": "TRADING ASSETS; TOTAL",
+    "q2_2023": 39746000,
+    "q3_2023": 38565000,
+    "abs_change_pct": 2.97
+  },
+  {
+    "y_seq": 4,
+    "mdrm": "bhck2170",
+    "schedule": "HC",
+    "line_item_code": "12",
+    "item_name": "TOTAL ASSETS",
+    "q2_2023": 82306000,
+    "q3_2023": 72112000,
+    "abs_change_pct": 12.39
+  },
+  {
+    "y_seq": 5,
+    "mdrm": "bhckb995",
+    "schedule": "HC",
+    "line_item_code": "14.b.",
+    "item_name": "SECURITIES SOLD UNDER AGREEMENTS TO REPURCHASE",
+    "q2_2023": 40754000,
+    "q3_2023": 32442000,
+    "abs_change_pct": 20.4
+  },
+  {
+    "y_seq": 6,
+    "mdrm": "bhck2948",
+    "schedule": "HC",
+    "line_item_code": "21",
+    "item_name": "TOTAL LIABILITIES AND MINORITY INTEREST",
+    "q2_2023": 76340000,
+    "q3_2023": 65940000,
+    "abs_change_pct": 13.62
+  },
+  {
+    "y_seq": 7,
+    "mdrm": "bhck3247",
+    "schedule": "HC-C",
+    "line_item_code": "26.a.",
+    "item_name": "UNDIVIDED PROFITS AND CAPITAL RESERVES (RETAINED EARNINGS)",
+    "q2_2023": 2273000,
+    "q3_2023": 2478000,
+    "abs_change_pct": 9.02
+  },
+  {
+    "y_seq": 8,
+    "mdrm": "bhck2750",
+    "schedule": "HC-C",
+    "line_item_code": "20",
+    "item_name": "OTHER LIABILITIES",
+    "q2_2023": 7082000,
+    "q3_2023": 5945000,
+    "abs_change_pct": 16.05
+  },
+  {
+    "y_seq": 9,
+    "mdrm": "bhckg105",
+    "schedule": "HC-C",
+    "line_item_code": "28",
+    "item_name": "TOTAL EQUITY CAPITAL INCLUDING NONCONTROLLING MINORITY INTERESTS IN CONSOLIDATED SUBSIDIARIES",
+    "q2_2023": 5966000,
+    "q3_2023": 6172000,
+    "abs_change_pct": 3.45
+  },
+  {
+    "y_seq": 10,
+    "mdrm": "bhck3300",
+    "schedule": "HC-C",
+    "line_item_code": "29",
+    "item_name": "TOTAL LIABILITIES; LIMITED-LIFE PREFERRED STOCK; AND EQUITY CAPITAL",
+    "q2_2023": 82306000,
+    "q3_2023": 72112000,
+    "abs_change_pct": 12.39
+  },
+  {
+    "y_seq": 11,
+    "mdrm": "bhck3190",
+    "schedule": "HC-C",
+    "line_item_code": "16",
+    "item_name": "OTHER BORROWED MONEY",
+    "q2_2023": 10140000,
+    "q3_2023": 9646000,
+    "abs_change_pct": 4.87
+  },
+  {
+    "y_seq": 12,
+    "mdrm": "bhckb989",
+    "schedule": "HC-F",
+    "line_item_code": "3.b.",
+    "item_name": "SECURITIES PURCHASED UNDER AGREEMENTS TO RESELL",
+    "q2_2023": 28786000,
+    "q3_2023": 18612000,
+    "abs_change_pct": 35.34
+  },
+  {
+    "y_seq": 13,
+    "mdrm": "bhck3548",
+    "schedule": "HC-F",
+    "line_item_code": "1",
+    "item_name": "CASH AND BALANCES DUE FROM DEPOSITORY INSTITUTIONS",
+    "q2_2023": 1357000,
+    "q3_2023": 1580000,
+    "abs_change_pct": 16.44
+  },
+  {
+    "y_seq": 14,
+    "mdrm": "bhdm6637",
+    "schedule": "HC-F",
+    "line_item_code": "14.a.",
+    "item_name": "LOANS; TOTAL (GROSS) (NOT NET OF UNACCRUED INCOME)",
+    "q2_2023": 15832000,
+    "q3_2023": 15753000,
+    "abs_change_pct": 0.5
+  },
+  {
+    "y_seq": 15,
+    "mdrm": "bhck3315",
+    "schedule": "HC-F",
+    "line_item_code": "24",
+    "item_name": "MINORITY INTERESTS IN CONSOLIDATED SUBSIDIARIES",
+    "q2_2023": 1674000,
+    "q3_2023": 1653000,
+    "abs_change_pct": 1.26
+  },
+  {
+    "y_seq": 16,
+    "mdrm": "bhck2222",
+    "schedule": "HC-F",
+    "line_item_code": "8.a.",
+    "item_name": "TOTAL EQUITY CAPITAL",
+    "q2_2023": 5966000,
+    "q3_2023": 6172000,
+    "abs_change_pct": 3.45
+  },
+  {
+    "y_seq": 17,
+    "mdrm": "bhck3484",
+    "schedule": "HC-F",
+    "line_item_code": "27",
+    "item_name": "MEMORANDUM ITEM: ALLOCATED TRANSFER RISK RESERVE (INCLUDING INTEREST ON FOREIGN OFFICE LOANS); DOMESTIC AND FOREIGN OFFICES",
+    "q2_2023": 138000,
+    "q3_2023": 130000,
+    "abs_change_pct": 6.12
+  },
+  {
+    "y_seq": 18,
+    "mdrm": "bhckg100",
+    "schedule": "HC-L",
+    "line_item_code": "21",
+    "item_name": "TOTAL LIABILITIES; PREFERRED STOCK; AND EQUITY CAPITAL",
+    "q2_2023": 76340000,
+    "q3_2023": 65940000,
+    "abs_change_pct": 13.62
+  },
+  {
+    "y_seq": 19,
+    "mdrm": "bhck2953",
+    "schedule": "HC-L",
+    "line_item_code": "15",
+    "item_name": "LOANS; NET OF UNACCRUED INCOME",
+    "q2_2023": 15959000,
+    "q3_2023": 15871000,
+    "abs_change_pct": 0.55
+  },
+  {
+    "y_seq": 20,
+    "mdrm": "bhck2931",
+    "schedule": "HC-L",
+    "line_item_code": "10",
+    "item_name": "TOTAL DEPOSITS",
+    "q2_2023": 57620000,
+    "q3_2023": 54970000,
+    "abs_change_pct": 4.84
+  },
+  {
+    "y_seq": 21,
+    "mdrm": "bhck2942",
+    "schedule": "HC-L",
+    "line_item_code": "16.a.",
+    "item_name": "DEPOSITS HELD IN DOMESTIC OFFICES",
+    "q2_2023": 51850000,
+    "q3_2023": 49330000,
+    "abs_change_pct": 4.86
+  },
+  {
+    "y_seq": 22,
+    "mdrm": "bhck2954",
+    "schedule": "HI",
+    "line_item_code": "16.b.",
+    "item_name": "DEPOSITS HELD IN FOREIGN OFFICES",
+    "q2_2023": 5762000,
+    "q3_2023": 5640000,
+    "abs_change_pct": 2.15
+  },
+  {
+    "y_seq": 23,
+    "mdrm": "bhck3195",
+    "schedule": "HI",
+    "line_item_code": "17",
+    "item_name": "TOTAL LIABILITIES",
+    "q2_2023": 70392000,
+    "q3_2023": 60049000,
+    "abs_change_pct": 14.7
+  },
+  {
+    "y_seq": 24,
+    "mdrm": "bhck3288",
+    "schedule": "HI",
+    "line_item_code": "23",
+    "item_name": "TOTAL LIABILITIES AND EQUITY CAPITAL",
+    "q2_2023": 82306000,
+    "q3_2023": 72112000,
+    "abs_change_pct": 12.39
+  },
+  {
+    "y_seq": 25,
+    "mdrm": "bhdm6632",
+    "schedule": "HI",
+    "line_item_code": "9",
+    "item_name": "INTEREST-BEARING DEPOSITS: TOTAL",
+    "q2_2023": 3426000,
+    "q3_2023": 3450000,
+    "abs_change_pct": 0.7
+  },
+  {
+    "y_seq": 26,
+    "mdrm": "bhdm6635",
+    "schedule": "HI",
+    "line_item_code": "10.a.(1)",
+    "item_name": "TIME DEPOSITS: LESS THAN $100,000",
+    "q2_2023": 1391000,
+    "q3_2023": 1390000,
+    "abs_change_pct": -0.07
+  },
+  {
+    "y_seq": 27,
+    "mdrm": "bhck3476",
+    "schedule": "HI-A",
+    "line_item_code": "11",
+    "item_name": "FEDERAL FUNDS PURCHASED AND SECURITIES SOLD UNDER AGREEMENTS TO REPURCHASE; FOREIGN OFFICES",
+    "q2_2023": 10000,
+    "q3_2023": 8000,
+    "abs_change_pct": 20.0
+  },
+  {
+    "y_seq": 28,
+    "mdrm": "bhck2929",
+    "schedule": "HI-A",
+    "line_item_code": "8",
+    "item_name": "EQUITY CAPITAL",
+    "q2_2023": 5966000,
+    "q3_2023": 6172000,
+    "abs_change_pct": 3.45
+  }
+]
