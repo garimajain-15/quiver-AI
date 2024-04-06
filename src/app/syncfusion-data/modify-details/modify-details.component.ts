@@ -42,6 +42,7 @@ export class ModifyDetailsComponent implements OnInit, OnDestroy {
       }
     });
     if (this.selectedRecordDetails) {
+      this.recordFormGroup?.get('y_seq')?.disable();
       this.recordFormGroup?.patchValue(this.selectedRecordDetails);
     }
     this.syncfusionDataService.fetchData();
@@ -84,15 +85,7 @@ export class ModifyDetailsComponent implements OnInit, OnDestroy {
     if (event?.value) {
       const foundSeqIndex = this.allRecords?.findIndex((data: Detail) => data?.y_seq === event?.value)
       if (foundSeqIndex !== -1) {
-        if (this.selectedRecordDetails) {
-          if (this.selectedRecordDetails?.y_seq === event?.value) {
-            this.showValidationForSequence = false;
-          } else {
-            this.showValidationForSequence = true;
-          }
-        } else {
-          this.showValidationForSequence = true;
-        }
+        this.showValidationForSequence = true;
       } else {
         this.showValidationForSequence = false;
       }

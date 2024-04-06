@@ -42,7 +42,7 @@ export class SyncfusionDataComponent implements OnInit, OnDestroy {
   public gridReference?: GridComponent;
   public addOrUpdateDetailsPageVisibility: boolean = false;
   public filterOptions: FilterSettingsModel = {
-    mode: 'Immediate'
+    mode: 'Immediate',
   };
 
   constructor(private syncfusionDataService: SyncfusionDataService) {
