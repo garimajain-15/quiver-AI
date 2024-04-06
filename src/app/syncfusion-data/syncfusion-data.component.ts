@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {
   ColumnChooserService,
   ExcelExportService,
-  FilterService,
+  FilterService, FilterSettingsModel,
   GridAllModule, GridComponent,
   PageService, PageSettingsModel, PdfExportService, PdfHeaderQueryCellInfoEventArgs,
   SortService, ToolbarItems, ToolbarService
@@ -41,6 +41,9 @@ export class SyncfusionDataComponent implements OnInit, OnDestroy {
   @ViewChild('gridReference')
   public gridReference?: GridComponent;
   public addOrUpdateDetailsPageVisibility: boolean = false;
+  public filterOptions: FilterSettingsModel = {
+    mode: 'Immediate'
+  };
 
   constructor(private syncfusionDataService: SyncfusionDataService) {
   }
