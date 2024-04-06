@@ -1,0 +1,18 @@
+
+<div class="p-10">
+  <ejs-grid [dataSource]="data" allowTextWrap="true"
+            [allowSorting]="true" [allowFiltering]="true"
+            [allowPaging]="true" [allowPdfExport]="true"
+            [allowExcelExport]="true">
+    <e-columns>
+      <e-column field="y_seq" headerText="y seq"></e-column>
+      <e-column field="mdrm" headerText="mdrm"></e-column>
+      <e-column field="schedule" headerText="schedule"></e-column>
+      <e-column field="line_item_code" headerText="Line Item Code"></e-column>
+      <e-column field="item_name" headerText="Item Name"></e-column>
+      <e-column field="q2_2023" headerText="q2 2023"></e-column>
+      <e-column field="abs_change_pct" headerText="Abs Change Pct"></e-column>
+    </e-columns>
+  </ejs-grid>
+
+</div>
