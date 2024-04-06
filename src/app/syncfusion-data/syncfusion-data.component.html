@@ -1,13 +1,12 @@
-
 <div class="p-10">
   <div class="flex items-center justify-between">
     <div class="flex mt-5 mb-5 text-2xl font-medium pr-5">
-      Details
+      Records
     </div>
     <div class="pr-2">
-      <ejs-tooltip content="Click here to add details.">
-        <button ejs-button class="normal-case" (click)="openAddDetailPage()"
-                content="Add Details" [isPrimary]="true"></button>
+      <ejs-tooltip content="Click here to add new record.">
+        <button ejs-button (click)="openAddDetailPage()"
+                content="Add New Record" [isPrimary]="true"></button>
       </ejs-tooltip>
     </div>
   </div>
@@ -28,5 +27,11 @@
       <e-column field="abs_change_pct" headerText="Abs Change Pct"></e-column>
     </e-columns>
   </ejs-grid>
+</div>
 
+<div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 mr-0 sm:mr-0 md:mr-36"
+     *ngIf="addOrUpdateDetailsPageVisibility">
+  <div class="bg-white w-full h-full overflow-auto p-8 absolute right-0 left-0 md:left-40 top-1/2 transform -translate-y-1/2">
+    <app-modify-details></app-modify-details>
+  </div>
 </div>

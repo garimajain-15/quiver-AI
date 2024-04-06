@@ -12,6 +12,10 @@ import {Subscription} from "rxjs";
 import {TooltipAllModule} from "@syncfusion/ej2-angular-popups";
 import {ButtonAllModule} from "@syncfusion/ej2-angular-buttons";
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
+import {ModifyDetailsComponent} from "./modify-details/modify-details.component";
+import {CommonModule} from "@angular/common";
+import {Detail} from "./model";
+import { ToastUtility } from '@syncfusion/ej2-notifications';
 
 @Component({
   selector: 'app-syncfusion-data',
@@ -19,7 +23,9 @@ import { ClickEventArgs } from '@syncfusion/ej2-navigations';
   imports: [
     GridAllModule,
     TooltipAllModule,
-    ButtonAllModule
+    ButtonAllModule,
+    ModifyDetailsComponent,
+    CommonModule
   ],
   templateUrl: './syncfusion-data.component.html',
   styleUrl: './syncfusion-data.component.scss',
@@ -27,21 +33,41 @@ import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 })
 export class SyncfusionDataComponent implements OnInit, OnDestroy {
   public shareData$: Subscription = new Subscription();
-  public data: [] = [];
+  public closePageDetails$: Subscription = new Subscription();
+  public addOrUpdateRecordDetails$: Subscription = new Subscription();
+  public data: Detail[] = [];
   public initialPageSettings: PageSettingsModel = {};
   public gridToolbarOptions: ToolbarItems[] = ['ExcelExport', 'CsvExport', 'PdfExport', 'Print', 'ColumnChooser'];
   @ViewChild('gridReference')
   public gridReference?: GridComponent;
+  public addOrUpdateDetailsPageVisibility: boolean = false;
 
   constructor(private syncfusionDataService: SyncfusionDataService) {
   }
 
   ngOnInit() {
     this.initialPageSettings = { pageSizes: true, pageCount: 4 };
-    this.shareData$ = this.syncfusionDataService.shareData$.subscribe(data => {
+    this.shareData$ = this.syncfusionDataService.shareData$.subscribe((data: Detail[]) => {
       if (data) {
         this.data = data;
         if (this.gridReference) {
+          this.gridReference.emptyRecordTemplate = 'No Records To Display.'
+        }
+      }
+    });
+    this.closePageDetails$ = this.syncfusionDataService.closePageDetails$.subscribe((data: boolean) => {
+      if (data) {
+        this.addOrUpdateDetailsPageVisibility = false;
+        document.body.style.overflow = 'scroll';
+      }
+    });
+    this.addOrUpdateRecordDetails$ = this.syncfusionDataService.addOrUpdateRecordDetails$.subscribe((data: string) => {
+      if (data && data !== '') {
+        this.addOrUpdateDetailsPageVisibility = false;
+        document.body.style.overflow = 'scroll';
+        if (this.gridReference) {
+          this.gridReference?.refresh();
+          this.syncfusionDataService.displayToast(data)
           this.gridReference.emptyRecordTemplate = 'No Records To Display.'
         }
       }
@@ -53,15 +79,22 @@ export class SyncfusionDataComponent implements OnInit, OnDestroy {
     if (this.shareData$) {
       this.shareData$.unsubscribe();
     }
+    if (this.closePageDetails$) {
+      this.closePageDetails$.unsubscribe();
+    }
+    if (this.addOrUpdateRecordDetails$) {
+      this.addOrUpdateRecordDetails$.unsubscribe();
+    }
   }
 
   openAddDetailPage() {
-
+    this.addOrUpdateDetailsPageVisibility = true;
+    document.body.style.overflow = 'hidden';
   }
 
   onToolbarClick(event: ClickEventArgs) {
     if (this.gridReference) {
-      this.syncfusionDataService.gridToolbarClickEvents(event, this.gridReference, 'Details', 480);
+      this.syncfusionDataService.gridToolbarClickEvents(event, this.gridReference, 'Records', 480);
     }
   }
 

@@ -4,17 +4,26 @@ import {Subject} from 'rxjs';
 import {ExcelExportProperties, PdfExportProperties} from "@syncfusion/ej2-grids";
 import {GridComponent} from "@syncfusion/ej2-angular-grids";
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
+import {Detail} from "./model";
+import {ToastUtility} from "@syncfusion/ej2-notifications";
 
 @Injectable({
   providedIn: 'root',
 })
 export class SyncfusionDataService {
-  public shareData = new Subject<[]>();
+  public shareData = new Subject<Detail[]>();
   public shareData$ = this.shareData.asObservable();
+  public closePageDetails = new Subject<boolean>();
+  public closePageDetails$ = this.closePageDetails.asObservable();
+  public allRecordList? : Detail[];
+  public addOrUpdateRecordDetails = new Subject<string>();
+  public addOrUpdateRecordDetails$ = this.addOrUpdateRecordDetails.asObservable();
+
   constructor(private http: HttpClient) { }
 
   fetchData() {
     return this.http.get<any>('./assets/JSON/sample-data.json').subscribe({next: data => {
+      this.allRecordList = data;
       this.shareData.next(data);
     }});
   }
@@ -79,5 +88,40 @@ export class SyncfusionDataService {
       }
     };
     gridReference.pdfExport(pdfExportProperties);
+  }
+
+  addOrUpdateDetails(detailToAddOrUpdate: Detail) {
+    if (detailToAddOrUpdate) {
+      let isAddedOrUpdateDetail: string = '';
+      if (this.allRecordList && this.allRecordList.length > 0) {
+        const existingRecordIndex = this.allRecordList.findIndex((detailData: Detail) => {
+          return detailToAddOrUpdate?.y_seq === detailData?.y_seq;
+        });
+        if (existingRecordIndex !== -1) {
+          this.allRecordList[existingRecordIndex] = detailToAddOrUpdate;
+          isAddedOrUpdateDetail = 'Updated';
+        } else {
+          this.allRecordList.unshift(detailToAddOrUpdate);
+          isAddedOrUpdateDetail = 'Added';
+        }
+        this.shareData.next(this.allRecordList);
+        this.addOrUpdateRecordDetails.next(isAddedOrUpdateDetail)
+      }
+    }
+  }
+
+  closeAddOrUpdatePage(confirmation: boolean) {
+    this.closePageDetails.next(confirmation);
+  }
+
+  displayToast(message: string) {
+    ToastUtility.show({
+      title: 'Success',
+      content: 'Details has been successfully ' + message + '.',
+      timeOut: 2000,
+      position: {X: 'Center', Y: 'Bottom'},
+      showCloseButton: true,
+      cssClass: 'e-toast-success'
+    });
   }
 }

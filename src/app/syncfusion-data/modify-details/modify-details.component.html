@@ -1,0 +1,85 @@
+<div class="flex justify-center items-center p-12">
+  <div class="p-4 bg-white ml-10 md:ml-40 mr-4 md:mr-40 lg:w-1/2">
+    <div class="flex items-center justify-between mb-8 space-x-4">
+      <h2 class="text-xl font-semibold mb-2">Add Details</h2>
+      <div class="flex items-center space-x-4 mb-2 pl-2">
+        <ejs-tooltip content="Click here to save details.">
+          <button ejs-progressbutton content="Save" (click)="onSubmitDetails()"
+                  [isPrimary]="true">
+          </button>
+        </ejs-tooltip>
+        <ejs-tooltip content="Click here to close the page.">
+          <button (click)="closeAddOrUpdatePage()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                 class="w-6 h-6 text-gray-600 cursor-pointer mt-1">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </ejs-tooltip>
+      </div>
+    </div>
+    <div>
+      <form autocomplete="off" [formGroup]="recordFormGroup">
+        <div class="md:grid md:grid-cols-2 md:gap-4">
+          <div class="mb-4">
+            <ejs-numerictextbox [placeholder]="'y seq*'" formControlName="y_seq" [decimals]="0" [format]="'n0'"
+                         [floatLabelType]="'Always'" (change)="onEnteringSequenceNo($event)">
+            </ejs-numerictextbox>
+            <div class="e-error" *ngIf="recordFormGroup?.get('y_seq')?.hasError('required') &&
+            recordFormGroup?.get('y_seq')?.touched">
+              This field is required.
+            </div>
+            <div class="e-error" *ngIf="showValidationForSequence && !recordFormGroup?.get('y_seq')?.hasError('required')">
+              Duplicate value entered.
+            </div>
+          </div>
+          <div class="mb-4">
+            <ejs-textbox type="text" [placeholder]="'mdrm'" formControlName="mdrm"
+                         [floatLabelType]="'Always'" autocomplete="off">
+            </ejs-textbox>
+          </div>
+        </div>
+
+        <div class="md:grid md:grid-cols-2 md:gap-4">
+          <div class="mb-4">
+            <ejs-textbox type="text" [placeholder]="'schedule'" formControlName="schedule"
+                         [floatLabelType]="'Always'" autocomplete="off">
+            </ejs-textbox>
+          </div>
+          <div class="mb-4">
+            <ejs-numerictextbox [placeholder]="'Abs Change Pct'" formControlName="abs_change_pct"
+                                [floatLabelType]="'Always'">
+            </ejs-numerictextbox>
+          </div>
+        </div>
+
+        <div class="md:grid md:grid-cols-2 md:gap-4">
+          <div class="mb-4">
+            <ejs-textbox type="text" [placeholder]="'Line Item Code'" formControlName="line_item_code"
+                         [floatLabelType]="'Always'" autocomplete="off">
+            </ejs-textbox>
+          </div>
+          <div class="mb-4">
+            <ejs-textbox type="text" [placeholder]="'Item Name'" formControlName="item_name"
+                         [floatLabelType]="'Always'" autocomplete="off">
+            </ejs-textbox>
+          </div>
+        </div>
+
+        <div class="md:grid md:grid-cols-2 md:gap-4">
+          <div class="mb-4">
+            <ejs-numerictextbox [placeholder]="'q2 2023'" formControlName="q2_2023"
+                                [floatLabelType]="'Always'">
+            </ejs-numerictextbox>
+          </div>
+          <div class="mb-4">
+            <ejs-numerictextbox [placeholder]="'q3 2023'" formControlName="q3_2023"
+                                [floatLabelType]="'Always'">
+            </ejs-numerictextbox>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
