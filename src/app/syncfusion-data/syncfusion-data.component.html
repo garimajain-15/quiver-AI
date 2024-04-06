@@ -1,9 +1,22 @@
 
 <div class="p-10">
-  <ejs-grid [dataSource]="data" allowTextWrap="true"
-            [allowSorting]="true" [allowFiltering]="true"
+  <div class="flex items-center justify-between">
+    <div class="flex mt-5 mb-5 text-2xl font-medium pr-5">
+      Details
+    </div>
+    <div class="pr-2">
+      <ejs-tooltip content="Click here to add details.">
+        <button ejs-button class="normal-case" (click)="openAddDetailPage()"
+                content="Add Details" [isPrimary]="true"></button>
+      </ejs-tooltip>
+    </div>
+  </div>
+  <ejs-grid #gridReference [dataSource]="data" allowTextWrap="true"
+            [allowSorting]="true" [allowFiltering]="true" width="100%"
             [allowPaging]="true" [allowPdfExport]="true"
-            [allowExcelExport]="true">
+            [allowExcelExport]="true" [pageSettings]="initialPageSettings"
+            [toolbar]='gridToolbarOptions' (toolbarClick)="onToolbarClick($event)"
+            (pdfHeaderQueryCellInfo)='pdfHeaderQueryCellInfo($event)'>
     <e-columns>
       <e-column field="y_seq" headerText="y seq"></e-column>
       <e-column field="mdrm" headerText="mdrm"></e-column>
@@ -11,6 +24,7 @@
       <e-column field="line_item_code" headerText="Line Item Code"></e-column>
       <e-column field="item_name" headerText="Item Name"></e-column>
       <e-column field="q2_2023" headerText="q2 2023"></e-column>
+      <e-column field="q3_2023" headerText="q3_2023"></e-column>
       <e-column field="abs_change_pct" headerText="Abs Change Pct"></e-column>
     </e-columns>
   </ejs-grid>
