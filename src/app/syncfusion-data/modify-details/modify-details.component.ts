@@ -48,6 +48,9 @@ export class ModifyDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (this.shareData$){
+      this.shareData$.unsubscribe();
+    }
   }
 
   onSubmitDetails() {
