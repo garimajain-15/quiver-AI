@@ -10,7 +10,7 @@
       </ejs-tooltip>
     </div>
   </div>
-  <ejs-grid #gridReference [dataSource]="data" allowTextWrap="true"
+  <ejs-grid #gridReference [dataSource]="data" allowTextWrap="true" gridLines="Both"
             [allowSorting]="true" [allowFiltering]="true" width="100%"
             [allowPaging]="true" [allowPdfExport]="true"
             [allowExcelExport]="true" [pageSettings]="initialPageSettings"
@@ -25,6 +25,14 @@
       <e-column field="q2_2023" headerText="q2 2023"></e-column>
       <e-column field="q3_2023" headerText="q3_2023"></e-column>
       <e-column field="abs_change_pct" headerText="Abs Change Pct"></e-column>
+      <e-column headerText="Action">
+        <ng-template #template let-data>
+          <ejs-tooltip content="Click here to update record.">
+            <button ejs-button content="Edit" (click)="openUpdateDetailPage(data)"></button>
+          </ejs-tooltip>
+
+        </ng-template>
+      </e-column>
     </e-columns>
   </ejs-grid>
 </div>
@@ -32,6 +40,6 @@
 <div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 mr-0 sm:mr-0 md:mr-36"
      *ngIf="addOrUpdateDetailsPageVisibility">
   <div class="bg-white w-full h-full overflow-auto p-8 absolute right-0 left-0 md:left-40 top-1/2 transform -translate-y-1/2">
-    <app-modify-details></app-modify-details>
+    <app-modify-details [selectedRecordDetails]="selectedRecordDetails"></app-modify-details>
   </div>
 </div>

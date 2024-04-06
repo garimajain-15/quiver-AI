@@ -4,7 +4,7 @@ import {
   ExcelExportService,
   FilterService,
   GridAllModule, GridComponent,
-  PageService, PageSettingsModel, PdfExportService, pdfHeaderQueryCellInfo, PdfHeaderQueryCellInfoEventArgs,
+  PageService, PageSettingsModel, PdfExportService, PdfHeaderQueryCellInfoEventArgs,
   SortService, ToolbarItems, ToolbarService
 } from "@syncfusion/ej2-angular-grids";
 import {SyncfusionDataService} from "./syncfusion-data.service";
@@ -15,7 +15,6 @@ import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 import {ModifyDetailsComponent} from "./modify-details/modify-details.component";
 import {CommonModule} from "@angular/common";
 import {Detail} from "./model";
-import { ToastUtility } from '@syncfusion/ej2-notifications';
 
 @Component({
   selector: 'app-syncfusion-data',
@@ -36,6 +35,7 @@ export class SyncfusionDataComponent implements OnInit, OnDestroy {
   public closePageDetails$: Subscription = new Subscription();
   public addOrUpdateRecordDetails$: Subscription = new Subscription();
   public data: Detail[] = [];
+  public selectedRecordDetails?: Detail;
   public initialPageSettings: PageSettingsModel = {};
   public gridToolbarOptions: ToolbarItems[] = ['ExcelExport', 'CsvExport', 'PdfExport', 'Print', 'ColumnChooser'];
   @ViewChild('gridReference')
@@ -90,6 +90,7 @@ export class SyncfusionDataComponent implements OnInit, OnDestroy {
   openAddDetailPage() {
     this.addOrUpdateDetailsPageVisibility = true;
     document.body.style.overflow = 'hidden';
+    this.selectedRecordDetails = undefined;
   }
 
   onToolbarClick(event: ClickEventArgs) {
@@ -105,5 +106,11 @@ export class SyncfusionDataComponent implements OnInit, OnDestroy {
         pdfCell['row']['pdfGrid']['repeatHeader'] = true;
       }
     }
+  }
+
+  openUpdateDetailPage(detail: Detail) {
+    this.addOrUpdateDetailsPageVisibility = true;
+    document.body.style.overflow = 'hidden';
+    this.selectedRecordDetails = detail;
   }
 }

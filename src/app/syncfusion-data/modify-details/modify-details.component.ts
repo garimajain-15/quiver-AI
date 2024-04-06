@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {TooltipAllModule} from "@syncfusion/ej2-angular-popups";
 import {ProgressButtonAllModule} from "@syncfusion/ej2-angular-splitbuttons";
 import {NumericTextBoxAllModule, TextBoxAllModule} from "@syncfusion/ej2-angular-inputs";
@@ -29,6 +29,7 @@ export class ModifyDetailsComponent implements OnInit, OnDestroy {
   public shareData$: Subscription = new Subscription();
   public allRecords: Detail[] = [];
   public showValidationForSequence: boolean = false;
+  @Input() selectedRecordDetails?: Detail;
 
   constructor(private syncfusionDataService: SyncfusionDataService) {
   }
@@ -40,6 +41,9 @@ export class ModifyDetailsComponent implements OnInit, OnDestroy {
         this.allRecords = data;
       }
     });
+    if (this.selectedRecordDetails) {
+      this.recordFormGroup?.patchValue(this.selectedRecordDetails);
+    }
     this.syncfusionDataService.fetchData();
   }
 
@@ -77,7 +81,15 @@ export class ModifyDetailsComponent implements OnInit, OnDestroy {
     if (event?.value) {
       const foundSeqIndex = this.allRecords?.findIndex((data: Detail) => data?.y_seq === event?.value)
       if (foundSeqIndex !== -1) {
-        this.showValidationForSequence = true;
+        if (this.selectedRecordDetails) {
+          if (this.selectedRecordDetails?.y_seq === event?.value) {
+            this.showValidationForSequence = false;
+          } else {
+            this.showValidationForSequence = true;
+          }
+        } else {
+          this.showValidationForSequence = true;
+        }
       } else {
         this.showValidationForSequence = false;
       }
